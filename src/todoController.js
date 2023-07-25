@@ -13,10 +13,23 @@ const db = require("./config/db");
                 "id": id,
                 "description" : description
             }
-            return res.status(200).json(result);
+            return res.status(201).json(result);
         });
     }
 
-module.exports = posttodo;
+    const postget = (req, res) => {
+    const query = "SELECT * FROM posts";
+    
+    db.query(query),(err,result) => {
+        if (err) return res.json(err);
+        return res.status(201).json(result);
+    };
+    }
 
+
+
+module.exports = {
+    posttodo,
+    postget,
+};
 
