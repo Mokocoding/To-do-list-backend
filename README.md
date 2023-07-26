@@ -18,7 +18,7 @@
 - Headers : "Content-type" : "application/json; charset=utf-8"
 - Response
     - Status : 200
-        ```
+    ```
     [
         {
             "id": 1,
@@ -29,7 +29,7 @@
             
         }
     ]
-        ```
+    ```
 ---
 ### 게시글 생성
 - URL : /api/posts
