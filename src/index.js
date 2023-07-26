@@ -3,7 +3,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { posttodo,postget,postoneget } = require("./todoController");
+const { posttodo,postget } = require("./todoController");
 
 router.get("/", (req, res) => {
     res.send("화이팅");
