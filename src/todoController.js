@@ -52,6 +52,14 @@ const db = require("./config/db");
             });
     }
 
+    const postdelete = (req, res) => {
+        const query = `DELETE FROM posts WHERE id=${req.params.id}`;
+
+        db.query(query,(err, result) => {
+            if(err) return res.json(err);
+            return res.status(200).json("삭제완료");
+        });
+    }
     // const postoneget = (req, res) => {
     // const query = "SELECT ? FROM posts";
 
@@ -69,6 +77,6 @@ module.exports = {
     postget,
     postoneget,
     postpatch,
-    
+    postdelete,
 };
 

@@ -3,7 +3,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { posttodo, postget, postoneget, postpatch } = require("./todoController");
+const { posttodo, postget, postoneget, postpatch, postdelete } = require("./todoController");
 
 router.get("/", (req, res) => {
     res.send("화이팅");
@@ -18,6 +18,7 @@ router.post("/posts", posttodo);
 router.get("/posts", postget);
 router.get("/posts/:id", postoneget);
 router.patch('/posts/:id', postpatch);
+router.delete('/posts/:id', postdelete);
 
 
 
