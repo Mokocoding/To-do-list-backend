@@ -4,12 +4,12 @@ const db = require("./config/db");
     const posttodo = (req, res) => {
     const query = "INSERT INTO posts SET ?";
 
-    const { title, description, target_date } = req.body;
+    const { description, target_date } = req.body;
 
-    db.query(query, { title, description, target_date },
+    db.query(query, { description, target_date },
         (err, result) => {
             const post = {
-                "title": title,
+                "id": result.insertId,
                 "description": description,
                 "target_date": target_date,
             };
@@ -27,21 +27,21 @@ const db = require("./config/db");
     });
     }
 
-    const postoneget = (req, res) => {
-    const query = "SELECT ? FROM posts";
+    // const postoneget = (req, res) => {
+    // const query = "SELECT ? FROM posts";
 
-    const id = req.body;
-    db.query(query,id, (err,result) => {
-        if (err) return res.json(err);
-        return res.status(200).json(result);
-    })
-    }
+    // const id = req.body;
+    // db.query(query,id, (err,result) => {
+    //     if (err) return res.json(err);
+    //     return res.status(200).json(result);
+    // })
+    // }
 
 
 
 module.exports = {
     posttodo,
     postget,
-    postoneget,
+    // postoneget,
 };
 

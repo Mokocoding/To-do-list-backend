@@ -14,9 +14,9 @@ router.get("/post", (req,res) => {
     res.send("글작성 공간");
 });
 
-router.post("/post", posttodo);
-router.get("/get", postget);
-router.get("/get", postoneget);
+router.post("/posts", posttodo);
+router.get("/posts", postget);
+// router.get('/get/${id}', postoneget);
 
 
 
