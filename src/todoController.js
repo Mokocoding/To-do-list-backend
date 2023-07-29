@@ -1,47 +1,43 @@
 "use strict";
-const db = require("./config/db");
+const CRUD = require("./models/CRUD");
 
-    const posttodo = (req, res) => {
-    const query = "INSERT INTO posts SET ?";
+    const posttodo = async (req, res) => {
+        const newPost = new CRUD(req.body); 
+        const response = await newPost.post()
+        return res.status(201).json(response);
+    } 
 
-    const { description, target_date } = req.body;
 
-    db.query(query, { description, target_date },
-        (err, result) => {
-            const post = {
-                "id": result.insertId,
-                "description": description,
-                "target_date": target_date,
-            };
-            if (err) return res.json(err);
-            return res.status(201).json(post);
-        });
+    const postget = async (req, res) => {
+        const newPost = new CRUD();
+        const response = await newPost.get();
+        return res.status(200).json(response);
     }
 
-    const postget = (req, res) => {
-    const query = "SELECT * FROM posts";
-    
-    db.query(query,(err,result) => {
-        if (err) return res.json(err);
-        return res.status(200).json(result);
-    });
+    const postoneget = async (req, res) => {
+        const newPost = new CRUD(req.params.id);
+        const response = await newPost.oneget();
+        return res.status(200).json(response);
     }
 
-    // const postoneget = (req, res) => {
-    // const query = "SELECT ? FROM posts";
+    const postpatch = async (req, res) => {
+        const newPost = new CRUD(req);
+        const response = await newPost.update();
+        return res.status(200).json(response);
+    }
 
-    // const id = req.body;
-    // db.query(query,id, (err,result) => {
-    //     if (err) return res.json(err);
-    //     return res.status(200).json(result);
-    // })
-    // }
-
+    const postdelete = async (req, res) => {
+        const newPost = new CRUD(req.params.id);
+        const response = await newPost.delete();
+        return res.json(response);
+    }
 
 
 module.exports = {
     posttodo,
     postget,
-    // postoneget,
+    postoneget,
+    postpatch,
+    postdelete,
 };
 
