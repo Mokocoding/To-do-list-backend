@@ -23,7 +23,7 @@
         {
             "id": 1,
             "description": "string",
-            "target_date": "2023-07-26",
+            "target_date": "2023-07-27T15:00:00.000Z",
             "created_at": "2023-07-25T17:48:21.000Z"
             
         }
@@ -41,7 +41,7 @@
         {
             "id": 1,
             "description": "string",
-            "target_date": "2021-07-23",
+            "target_date": "2023-07-27T15:00:00.000Z",
             "created_at": "2023-07-25T22:50:02.000Z"
         }
     ]
@@ -76,7 +76,7 @@
     ```
     {
         description : "string",
-        target_date : "xxxx-xx-xx"
+        target_date : "2023-07-26"
     }
     ```
 - Response
@@ -93,3 +93,9 @@
 - URL : /api/posts/{id} (id:number = 게시글 고유 ID)
 - Method : DELETE
 - Headers : "Content-type" : "application/json; charset=utf-8"
+- Response
+    ```
+    {
+        "msg": "삭제완료"
+    }
+    ```
