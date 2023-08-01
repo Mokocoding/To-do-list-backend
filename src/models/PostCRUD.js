@@ -2,27 +2,6 @@
 
 const db = require("../config/db");
 
-<<<<<<< HEAD
-class PostCRUD {
-    static postcreate(posts) {
-        return new Promise((resolve, reject) => {
-            const query = "INSERT INTO posts SET ?"; 
-            const { description, target_date } = posts;
-        db.query(query, {description, target_date}, 
-            (err, data) => {
-                if (err) reject(`${err}`);
-                data = {
-                    "id": data.insertId,
-                    "description": description,
-                    "target_date": target_date,
-                }
-                resolve(data);
-            }
-        )})
-    
-    }
-}
-=======
 const PostCRUD = {
     async postget() {
         try {
@@ -45,10 +24,7 @@ const PostCRUD = {
                 "target_date": target_date,
                 "created_at": result[0].created_at
             }
-            // console.log(response);
             return response;
-            // const [rows, fields] = await db.query(`SELECT * from posts where id = ${result.insertId}`);
-            // return rows;
         }
         catch (err) {
             return err;
@@ -206,5 +182,4 @@ const PostCRUD = {
 //         });
 //     }
 // }
->>>>>>> 3b3be12f95fc0bc234982188c568aeb2270a7462
 module.exports = PostCRUD; 
