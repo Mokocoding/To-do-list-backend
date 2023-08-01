@@ -1,6 +1,6 @@
 "use strict";
-
 const PostCRUD = require("./PostCRUD");
+
 
 class CRUD {
     constructor(body) {
@@ -10,9 +10,9 @@ class CRUD {
     async post() {
 
         const post = this.body;
-
         try {
             const response = await PostCRUD.postcreate(post); 
+            console.log(response);
             return response;
         }   
         catch (err) {
@@ -50,6 +50,7 @@ class CRUD {
 
         try {
             const response = await PostCRUD.postupdate(post);
+            console.log(response);
             return response;
         } 
         catch (err) {
