@@ -14,6 +14,7 @@ const CRUD = require("./models/CRUD");
         return res.status(200).json(response);
     }
 
+
     const postoneget = async (req, res) => {
         const newPost = new CRUD(req.params.id);
         const response = await newPost.oneget();
