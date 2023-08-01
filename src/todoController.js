@@ -1,11 +1,15 @@
 "use strict";
+<<<<<<< HEAD
 const db = require("./config/db");
 const PostCRUD = require("./models/PostCRUD");
+=======
+>>>>>>> 3b3be12f95fc0bc234982188c568aeb2270a7462
 const CRUD = require("./models/CRUD");
 
     const posttodo = async (req, res) => {
         const newPost = new CRUD(req.body); 
         const response = await newPost.post()
+<<<<<<< HEAD
         return res.json(response);
         // db.query(query, { description, target_date },
         //     (err, result) => {
@@ -70,7 +74,36 @@ const CRUD = require("./models/CRUD");
     //     return res.status(200).json(result);
     // })
     // }
+=======
+        return res.status(201).json(response);
+    } 
 
+
+    const postget = async (req, res) => {
+        const newPost = new CRUD();
+        const response = await newPost.get();
+        return res.status(200).json(response);
+    }
+
+
+    const postoneget = async (req, res) => {
+        const newPost = new CRUD(req.params.id);
+        const response = await newPost.oneget();
+        return res.status(200).json(response);
+    }
+
+    const postpatch = async (req, res) => {
+        const newPost = new CRUD(req);
+        const response = await newPost.update();
+        return res.status(200).json(response);
+    }
+>>>>>>> 3b3be12f95fc0bc234982188c568aeb2270a7462
+
+    const postdelete = async (req, res) => {
+        const newPost = new CRUD(req.params.id);
+        const response = await newPost.delete();
+        return res.json(response);
+    }
 
 
 module.exports = {
