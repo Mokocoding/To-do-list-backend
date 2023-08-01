@@ -22,7 +22,6 @@ const PostCRUD = {
                 "id": result[0].insertId,
                 "description": description,
                 "target_date": target_date,
-                "created_at": result[0].created_at
             }
             return response;
         }
