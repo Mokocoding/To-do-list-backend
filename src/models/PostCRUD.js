@@ -54,8 +54,7 @@ const PostCRUD = {
         catch (err) {
             return err;
         }
-    }
-
+    },
 
 
 }

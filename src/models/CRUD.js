@@ -29,15 +29,20 @@ class CRUD {
 
         try {
             const error = await CRUD.error(post);
+
             if (error.success) {
-            const result = await PostCRUD.postcreate(post);
-            const response = await PostCRUD.postoneget(result[0].insertId);
-            if (result[0].affectedRows) {
-            return response;
+                const result = await PostCRUD.postcreate(post);
+                const response = await PostCRUD.postoneget(result[0].insertId);
+
+                    if (result[0].affectedRows) {
+                        return response;
+                    }
+                    
             }
-        }
+
             return { success: false, msg: "게시글 생성에 실패했습니다." };
         }   
+
         catch (err) {
             throw err;
         }
@@ -111,6 +116,7 @@ class CRUD {
             return { success: false, msg: err };
         }
     }
+
 
 }
 
