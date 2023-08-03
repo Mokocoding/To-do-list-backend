@@ -39,11 +39,7 @@ const PostCRUD = {
         try {
             const { description, target_date } = posts.body;
             const result = await db.query(`UPDATE posts SET ? where id = ${ posts.params.id };`, { description, target_date });
-            const response = {
-                "description": description,
-                "target_date": target_date
-            };
-            return response;
+            return result;
         }
         catch (err) {
             return err;
