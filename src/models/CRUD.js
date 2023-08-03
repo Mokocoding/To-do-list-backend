@@ -8,15 +8,18 @@ class CRUD {
     }
 
     async post() {
-
         const post = this.body;
+        // const error = error(post);
         try {
-            const response = await PostCRUD.postcreate(post); 
-            console.log(response);
+            const result = await PostCRUD.postcreate(post);
+            const response = await PostCRUD.postoneget(result[0].insertId);
+            if (result[0].affectedRows) {
             return response;
+            }
+            return { success: false, msg: "게시글 생성에 실패했습니다." };
         }   
         catch (err) {
-            return { success: false, msg: err };
+            throw err;
         }
     }
 
@@ -70,6 +73,18 @@ class CRUD {
             return { success: false, msg: err };
         }
     }
+
+    // error (post) {
+    //     console.log(post.description);
+    //     return success;
+    //     if (post.description === null) {
+    //             throw err;
+    //     }
+    //     if (post.target_date.length === null)
+    //     if (!af어쩌구) {
+    //         return { statusCode : (123)}
+    //     } 
+    // }
 }
 
 module.exports = CRUD;

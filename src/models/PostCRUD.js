@@ -17,17 +17,10 @@ const PostCRUD = {
         try { 
             const { description, target_date } = posts;
             const result = await db.query("INSERT INTO posts SET ?;", { description, target_date });
-            const [row , fields] = db.query("SELECT * FROM posts ")
-            const response = {
-                "id": result[0].insertId,
-                "description": description,
-                "target_date": target_date,
-                "created_at": result[0].created_at
-            }
-            return response;
+            return result;
         }
         catch (err) {
-            return err;
+            return { "statusCode":500, msg : "게시글 생성 도중 발생한 서버 에러" };
         }
     },
 
