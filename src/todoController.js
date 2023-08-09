@@ -1,21 +1,26 @@
 "use strict";
 const db = require("./config/db");
+const CRUD = require("./models/PostStorages");
 
     const posttodo = (req, res) => {
-        const query = "INSERT INTO posts SET ?";
+    const post = new CRUD(req.body);
+    const response = CRUD.todopost(post);
+    return res.json(response);
 
-        const { description, target_date } = req.body;
+        // const query = "INSERT INTO posts SET ?";
 
-        db.query(query, { description, target_date },
-            (err, result) => {
-                const post = {
-                    "id": result.insertId,
-                    "description": description,
-                    "target_date": target_date,
-                };
-                if (err) return res.json(err);
-                return res.status(201).json(post);
-            });
+        // const { description, target_date } = req.body;
+
+        // db.query(query, { description, target_date },
+        //     (err, result) => {
+        //         const post = {
+        //             "id": result.insertId,
+        //             "description": description,
+        //             "target_date": target_date,
+        //         };
+        //         if (err) return res.json(err);
+        //         return res.status(201).json(post);
+        //     });
     }
 
     const postget = (req, res) => {

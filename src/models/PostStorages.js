@@ -1,20 +1,26 @@
 // "use strict";
+const db = require("../config/db");
 
-// const db = require("../config/db");
+class CRUD {
+    constructor(body) {
+        this.body = body;
+    }
 
-// const posttodo = (req, res) => {
-//     const query = "INSERT INTO posts SET ?";
+    static todopost(getpost) {
+        return new Promise((resolve, reject) => {
+            const query = "INSERT INTO posts SET ?";
+            db.query(query,[getpost.body.description, getpost.body.target_date],
+                (err, result) => {
+                    const postinfo = {
+                        // "id": result.insertId,
+                        "description": getpost.description,
+                        "target_date": getpost.target_date
+                    }
+                    if (err) reject(`${err}`);
+                    resolve(postinfo);
+            } );
+        });
+    }
+}
 
-//     const { id, description } = req.body;
-
-//     db.query(query, { id, description },
-//         (err, result) => {
-//             if (err) return res.json(err);
-//             result = { "id": id,
-//                         "description" : description
-//         }
-//             return res.status(200).json(result);
-//         });
-//     }
-
-// module.exports = posttodo;
+module.exports = CRUD;
