@@ -1,5 +1,4 @@
 "use strict";
-<<<<<<< HEAD
 const db = require("./config/db");
 const CRUD = require("./models/PostStorages");
 
@@ -22,21 +21,6 @@ const CRUD = require("./models/PostStorages");
         //         if (err) return res.json(err);
         //         return res.status(201).json(post);
         //     });
-=======
-const CRUD = require("./models/CRUD");
-
-    const posttodo = async (req, res) => {
-        const newPost = new CRUD(req.body); 
-        const response = await newPost.post()
-        return res.status(201).json(response);
-    } 
-
-
-    const postget = async (req, res) => {
-        const newPost = new CRUD();
-        const response = await newPost.get();
-        return res.status(200).json(response);
->>>>>>> 3b3be12f95fc0bc234982188c568aeb2270a7462
     }
 
 
