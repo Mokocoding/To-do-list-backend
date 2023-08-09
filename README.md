@@ -12,8 +12,8 @@
     
 ## API 명세
 
-### 게시글 전체 조회 
-- URL : /api/posts
+### 게시글,메모 전체 조회 
+- URL : /api/posts || memos
 - Method : GET
 - Headers : "Content-type" : "application/json; charset=utf-8"
 - Response
@@ -29,8 +29,8 @@
     ]
     ```
 ---
-### 게시글 단일 조회
-- URL : /api/posts/{id} (id:number = 게시글 고유 ID)
+### 게시글, 메모 단일 조회
+- URL : /api/posts || memos/{id} (id:number = 게시글 고유 ID)
 - Method : GET
 - Headers : "Content-type" : "application/json; charset=utf-8"
 - Response
@@ -46,8 +46,8 @@
     ]
     ```
 ---
-### 게시글 생성
-- URL : /api/posts
+### 게시글, 메모 생성
+- URL : /api/posts || memos
 - Method : POST
 - Headers : "Content-type" : "application/json; charset=utf-8"
 - Request body 
@@ -69,7 +69,7 @@
     ```
 ---
 ### 게시글 수정
-- URL : /api/posts/{id} (id:number = 게시글 고유 ID)
+- URL : /api/posts || memos/{id} (id:number = 게시글 고유 ID)
 - Method : PATCH
 - Headers : "Content-type" : "application/json; charset=utf-8"
 - Request body 
@@ -91,13 +91,13 @@
     }
     ```
 ---
-### 게시글 삭제
-- URL : /api/posts/{id} (id:number = 게시글 고유 ID)
+### 게시글,메모 삭제
+- URL : /api/posts || memos/{id} (id:number = 게시글 고유 ID)
 - Method : DELETE
 - Headers : "Content-type" : "application/json; charset=utf-8"
 - Response
     ```
     {
-        "msg": "삭제완료"
+        "success": true
     }
     ```
